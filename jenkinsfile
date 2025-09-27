@@ -27,7 +27,7 @@ pipeline {
                 '''
             }
         }
-        stage('Deliver') {
+        stage('Result') {
             steps {
                 echo 'Deliver....'
                 sh '''
@@ -37,3 +37,4 @@ pipeline {
         }
     }
 }
+
