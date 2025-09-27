@@ -1,9 +1,10 @@
-'''
+```
 docker build -t myjenkins-blueocean:1.27.20 .
-'''
-'''
+```
+
+```
 docker network create jenkins
-'''
+```
 
  ### MacOS / Linux
 ```
