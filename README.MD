@@ -34,3 +34,8 @@ Conectare la containerul de jenkins
 ```
 docker exec -it jenkins-blueocean bash
 ```
+
+```
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 1cbaa00ad2bf
+
+```
