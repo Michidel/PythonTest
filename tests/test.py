@@ -16,7 +16,7 @@ def solutie2(x, y):
     else:
         return "Ambele sunt egale"
 
-# Seturi de date
+
 inputs_equal = [(i, i) for i in range(1, 21)]
 inputs_x_gt_y = [(i+1, i) for i in range(1, 21)]
 inputs_y_gt_x = [(i, i+1) for i in range(1, 21)]
@@ -31,7 +31,7 @@ def print_progress(percent, bar_len=40):
 def run_bench(func, inputs, N=1_000_000):
     start = time.perf_counter()
     total = len(inputs) * N
-    checkpoint = total // 100  # progres la fiecare 1%
+    checkpoint = total // 100  #
     count = 0
     next_update = checkpoint
     for _ in range(N):
@@ -47,8 +47,8 @@ def run_bench(func, inputs, N=1_000_000):
     print()  
     return end - start
 
-# Benchmark cu progres
-repeat = 3  # rulează de 3 ori pentru a calcula medie și deviație standard
+
+repeat = 3  
 times1, times2 = [], []
 
 print("Rulez Solutia 1...")
@@ -59,7 +59,7 @@ print("Rulez Solutia 2...")
 for _ in range(repeat):
     times2.append(run_bench(solutie2, all_inputs, N=1_000_000))
 
-# Rezultate
+
 avg1, std1 = statistics.mean(times1), statistics.stdev(times1)
 avg2, std2 = statistics.mean(times2), statistics.stdev(times2)
 
@@ -72,4 +72,5 @@ if avg1 < avg2:
 elif avg2 < avg1:
     print(" Cea mai rapidă în medie este: Soluția 2")
 else:
+
     print(" Ambele soluții sunt la fel de rapide în medie")
