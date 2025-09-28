@@ -1,40 +1,31 @@
 pipeline {
-    agent { 
-        node {
-            label 'docker-agent-python'
-            }
-      }
-    triggers {
-        pollSCM '* * * * *'
+    agent {
+        docker {
+            image 'python:3.11-alpine'   
+            args '-u root'               
+        }
     }
+
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo "Building.."
-                sh '''
-                cd myapp
-                pip install -r requirements.txt
-                '''
+                checkout scm
             }
         }
-        stage('Test') {
+
+        stage('Run Python Script') {
             steps {
-                echo "Testing.."
-                sh '''
-                cd myapp
-                python3 hello.py
-                python3 hello.py --name=Brad
-                '''
+                sh 'python3 test.py'
             }
         }
-        stage('Result') {
-            steps {
-                echo 'Deliver....'
-                sh '''
-                echo "doing delivery stuff.."
-                '''
-            }
+    }
+
+    post {
+        success {
+            echo " Build finished successfully!"
+        }
+        failure {
+            echo " Build failed. Check logs."
         }
     }
 }
-
